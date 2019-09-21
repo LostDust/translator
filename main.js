@@ -3,7 +3,7 @@ const fs = require("fs");
 
 const server = express();
 
-server.listen(5050, () => {
+server.listen(3100, () => {
   console.log("Server Start!");
 });
 
