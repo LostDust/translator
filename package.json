@@ -1,0 +1,10 @@
+{
+  "name": "translator",
+  "version": "1.0.0",
+  "main": "main.js",
+  "author": "LostDust <2107774898@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}
