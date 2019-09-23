@@ -19,7 +19,7 @@ app.use(cors());
 
 server.get("/api/", (req, res) => {
   console.log(`${req.query}`);
-  res.send("Hello");
+  res.send(JSON.stringify(req.query));
 });
 
 server.use("/src", express.static("./public"));
