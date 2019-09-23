@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
+const fetch = require("node-fetch");
 const { hex_md5 } = require("./lib/md5.js");
 
 const server = express();
