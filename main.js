@@ -17,9 +17,31 @@ server.get("/", (req, res) => {
 
 server.use(cors());
 
+function join(json) {
+  let str = `${json.appid}${json.q}${json.salt}bR4o8cuH6rqJPyclgxDU`;
+  let sign = hex_md5(str);
+  return `?q=${json.q}&from=${json.from}&to=${json.to}&appid=${json.appid}&salt=${json.salt}&sign=${sign}`;
+}
 server.get("/api/", (req, res) => {
-  console.log(JSON.stringify(req.query));
-  res.send(JSON.stringify(req.query));
+  const { q, from, to } = req.query;
+  let data = join({
+    type: "GET",
+    q,
+    from,
+    to,
+    appid: "20190818000327471",
+    salt: Math.floor(Math.random() * 100)
+  });
+  fetch(`https://fanyi-api.baidu.com/api/trans/vip/translate${data}`)
+    .then(res => res.json())
+    .then(msg => {
+      console.log(msg.trans_result[0].dst);
+      res.send(msg.trans_result[0].dst);
+      // this.setState({ output: msg.trans_result[0].dst });
+    });
+
+  // console.log(JSON.stringify(req.query));
+  // res.send(JSON.stringify(req.query));
 });
 
 server.use("/src", express.static("./public"));
