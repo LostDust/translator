@@ -15,10 +15,10 @@ server.get("/", (req, res) => {
   });
 });
 
-app.use(cors());
+server.use(cors());
 
 server.get("/api/", (req, res) => {
-  console.log(`${req.query}`);
+  console.log(JSON.stringify(req.query));
   res.send(JSON.stringify(req.query));
 });
 
