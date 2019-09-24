@@ -24,7 +24,7 @@ function join(json) {
   let sign = hex_md5(str);
   return `?q=${json.q}&from=${json.from}&to=${json.to}&appid=${json.appid}&salt=${json.salt}&sign=${sign}`;
 }
-server.get("/api/", (req, res) => {
+server.get("/api", (req, res) => {
   const { q, from, to } = req.query;
   let data = join({
     type: "GET",
@@ -39,11 +39,13 @@ server.get("/api/", (req, res) => {
     .then(msg => {
       console.log(msg.trans_result[0].dst);
       res.send(msg.trans_result[0].dst);
-      // this.setState({ output: msg.trans_result[0].dst });
     });
-
-  // console.log(JSON.stringify(req.query));
-  // res.send(JSON.stringify(req.query));
+});
+server.get("/database", (req, res) => {
+  fs.readFile("./data.jsin", "utf-8", (err, data) => {
+    if (err) throw err;
+    res.send(data);
+  });
 });
 
 server.use("/src", express.static("./public"));

@@ -1,0 +1,15 @@
+{
+  "default": [
+    { "from": "core", "to": "核心" },
+    { "from": "package", "to": "包裹" },
+    { "from": "region", "to": "区域" },
+    { "from": "build", "to": "建造、构建" },
+    { "from": "skip", "to": "跳过" },
+    { "from": "toggle", "to": "切换" },
+    { "from": "count", "to": "计数" },
+    { "from": "effect", "to": "影响" },
+    { "from": "mutation", "to": "变化 / 突变" },
+    { "from": "bundle", "to": "捆、打包" }
+  ],
+  "other": [{ "from": "core", "to": "核心" }]
+}
