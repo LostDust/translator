@@ -42,7 +42,7 @@ server.get("/api", (req, res) => {
     });
 });
 server.get("/database", (req, res) => {
-  fs.readFile("./data.jsin", "utf-8", (err, data) => {
+  fs.readFile("./data.json", "utf-8", (err, data) => {
     if (err) throw err;
     res.send(data);
   });
