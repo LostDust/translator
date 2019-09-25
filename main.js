@@ -54,11 +54,10 @@ server.post("/save", express.json());
 
 server.post("/save", (req, res) => {
   console.log(JSON.stringify(req.body));
-  // fs.writeFile("./data.json", "utf-8", (err, data) => {
-  //   if (err) throw err;
-  //   res.send(data);
-  // });
-  res.send(JSON.stringify(req.body));
+  fs.writeFile("./data.json", req.body, (err, data) => {
+    if (err) throw err;
+    res.send(JSON.stringify(req.body));
+  });
 });
 
 server.use("/src", express.static("./public"));
