@@ -47,14 +47,14 @@ server.get("/database", (req, res) => {
     res.send(data);
   });
 });
+
 // contentType: www-form-urlencoded
 server.post("/save", express.urlencoded({ extended: true }));
 // contentType: application/json
 server.post("/save", express.json());
-
 server.post("/save", (req, res) => {
   console.log(JSON.stringify(req.body));
-  fs.writeFile("./data.json", req.body, err => {
+  fs.writeFile("./data.json", JSON.stringify(req.body), err => {
     if (err) throw err;
     res.send("write OK");
   });
