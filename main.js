@@ -60,4 +60,4 @@ server.post("/save", (req, res) => {
   });
 });
 
-server.use("/src", express.static("./public"));
+server.use("/static", express.static("./public"));
