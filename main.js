@@ -24,10 +24,10 @@ server.get("/", (req, res) => {
 
   switch (req.url) {
     case "/" || "/index.html":
-      send(req.url);
+      send("/index.html");
       break;
     case "/app.js":
-      send(req.url);
+      send("/app.js");
       break;
     default:
       res.writeHead(404);
