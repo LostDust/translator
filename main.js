@@ -12,37 +12,31 @@ server.listen(3100, () => {
 // 允许跨域
 server.use(cors());
 
-server.get("/", (req, res) => {
-  console.log(`有人来了：${req.url}`);
+server.use("/static", express.static("./public"));
 
-  // function send(uri) {
-  //   console.log(`读取：./page${uri}`);
-  //   fs.readFile(`./page${uri}`, "utf-8", (err, data) => {
-  //     if (err) throw err;
-  //     res.send(data);
-  //   });
-  // }
+// server.get("/", (req, res) => {
+//   console.log(`有人来了：${req.url}`);
 
-  switch (req.url) {
-    case "/" || "/index.html":
-      // send("/index.html");
-      fs.readFile(`./page/index.html`, "utf-8", (err, data) => {
-        if (err) throw err;
-        res.send(data);
-      });
-      break;
-    case "/app.js":
-      // send("/app.js");
-      fs.readFile(`./page/app.js`, "utf-8", (err, data) => {
-        if (err) throw err;
-        res.send(data);
-      });
-      break;
-    default:
-      res.writeHead(404);
-      res.end("ERROR: 404");
-  }
-});
+// switch (req.url) {
+//   case "/" || "/index.html":
+//     // send("/index.html");
+//     fs.readFile(`./page/index.html`, "utf-8", (err, data) => {
+//       if (err) throw err;
+//       res.send(data);
+//     });
+//     break;
+//   case "/app.js":
+//     // send("/app.js");
+//     fs.readFile(`./page/app.js`, "utf-8", (err, data) => {
+//       if (err) throw err;
+//       res.send(data);
+//     });
+//     break;
+//   default:
+//     res.writeHead(404);
+//     res.end("ERROR: 404");
+// }
+// });
 
 server.get("/api", (req, res) => {
   const { q, from, to } = req.query;
@@ -82,3 +76,4 @@ server.post("/save", (req, res) => {
 
 // 静态文件托管
 server.use("/static", express.static("./public"));
+server.use("/", express.static("./page"));
