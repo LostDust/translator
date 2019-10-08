@@ -35,8 +35,9 @@ server.get("/api", (req, res) => {
   //   appid: "20190818000327471",
   //   salt: Math.floor(Math.random() * 100)
   // });
+  const appid = "20190818000327471";
   const salt = Math.floor(Math.random() * 100);
-  const sign = hex_md5(`20190818000327471${q}${salt}bR4o8cuH6rqJPyclgxDU`);
+  const sign = hex_md5(`${appid}${q}${salt}bR4o8cuH6rqJPyclgxDU`);
   const uri = `?q=${q}&from=${from}&to=${to}&appid=${appid}&salt=${salt}&sign=${sign}`;
   // fetch(`https://fanyi-api.baidu.com/api/trans/vip/translate${data}`)
   fetch(`https://fanyi-api.baidu.com/api/trans/vip/translate${uri}`)
