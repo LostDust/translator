@@ -15,20 +15,28 @@ server.use(cors());
 server.get("/", (req, res) => {
   console.log(`有人来了：${req.url}`);
 
-  function send(uri) {
-    console.log(`读取：./page${uri}`);
-    fs.readFile(`./page${uri}`, "utf-8", (err, data) => {
-      if (err) throw err;
-      res.send(data);
-    });
-  }
+  // function send(uri) {
+  //   console.log(`读取：./page${uri}`);
+  //   fs.readFile(`./page${uri}`, "utf-8", (err, data) => {
+  //     if (err) throw err;
+  //     res.send(data);
+  //   });
+  // }
 
   switch (req.url) {
     case "/" || "/index.html":
-      send("/index.html");
+      // send("/index.html");
+      fs.readFile(`./page/index.html`, "utf-8", (err, data) => {
+        if (err) throw err;
+        res.send(data);
+      });
       break;
     case "/app.js":
-      send("/app.js");
+      // send("/app.js");
+      fs.readFile(`./page/app.js`, "utf-8", (err, data) => {
+        if (err) throw err;
+        res.send(data);
+      });
       break;
     default:
       res.writeHead(404);
