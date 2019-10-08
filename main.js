@@ -13,10 +13,7 @@ server.listen(3100, () => {
 server.use(cors());
 
 server.get("/", (req, res) => {
-  // fs.readFile(`./page`, "utf-8", (err, data) => {
-  //   if (err) throw err;
-  //   res.send(data);
-  // });
+  console.log(`有人来了：${req.url}`);
 
   function send(uri) {
     fs.readFile(`./page${uri}`, "utf-8", (err, data) => {
