@@ -12,7 +12,9 @@ server.listen(3100, () => {
 // 允许跨域
 server.use(cors());
 
+// 静态文件托管
 server.use("/", express.static("./page"));
+server.use("/static", express.static("./public"));
 
 server.get("/api", (req, res) => {
   const { q, from, to } = req.query;
@@ -49,7 +51,3 @@ server.post("/save", (req, res) => {
     res.send("write OK");
   });
 });
-
-// 静态文件托管
-server.use("/static", express.static("./public"));
-// server.use("/", express.static("./page"));
