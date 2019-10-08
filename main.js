@@ -16,6 +16,7 @@ server.get("/", (req, res) => {
   console.log(`有人来了：${req.url}`);
 
   function send(uri) {
+    console.log(`读取：./page${uri}`);
     fs.readFile(`./page${uri}`, "utf-8", (err, data) => {
       if (err) throw err;
       res.send(data);
