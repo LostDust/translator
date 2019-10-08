@@ -17,6 +17,7 @@ server.get("/", (req, res) => {
   });
 });
 
+// 允许跨域
 server.use(cors());
 
 function join(json) {
@@ -26,15 +27,19 @@ function join(json) {
 }
 server.get("/api", (req, res) => {
   const { q, from, to } = req.query;
-  let data = join({
-    type: "GET",
-    q,
-    from,
-    to,
-    appid: "20190818000327471",
-    salt: Math.floor(Math.random() * 100)
-  });
-  fetch(`https://fanyi-api.baidu.com/api/trans/vip/translate${data}`)
+  // let data = join({
+  //   type: "GET",
+  //   q,
+  //   from,
+  //   to,
+  //   appid: "20190818000327471",
+  //   salt: Math.floor(Math.random() * 100)
+  // });
+  const salt = Math.floor(Math.random() * 100);
+  const sign = hex_md5(`20190818000327471${q}${salt}bR4o8cuH6rqJPyclgxDU`);
+  const uri = `?q=${q}&from=${from}&to=${to}&appid=${appid}&salt=${salt}&sign=${sign}`;
+  // fetch(`https://fanyi-api.baidu.com/api/trans/vip/translate${data}`)
+  fetch(`https://fanyi-api.baidu.com/api/trans/vip/translate${uri}`)
     .then(res => res.json())
     .then(msg => {
       console.log(msg.trans_result[0].dst);
@@ -48,6 +53,7 @@ server.get("/database", (req, res) => {
   });
 });
 
+// POST 请求体解析
 // contentType: www-form-urlencoded
 server.post("/save", express.urlencoded({ extended: true }));
 // contentType: application/json
@@ -59,5 +65,5 @@ server.post("/save", (req, res) => {
     res.send("write OK");
   });
 });
-
+// 静态文件托管
 server.use("/static", express.static("./public"));
