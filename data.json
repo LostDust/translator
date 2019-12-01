@@ -1,11 +1,12 @@
 [
-  { "from": "core", "to": "核心" },
-  { "from": "package", "to": "包裹" },
-  { "from": "region", "to": "区域" },
-  { "from": "build", "to": "建造、构建" },
-  { "from": "skip", "to": "跳过" },
-  { "from": "toggle", "to": "切换" },
-  { "from": "effect", "to": "影响" },
-  { "from": "mutation", "to": "变化 / 突变" },
-  { "from": "bundle", "to": "捆、打包" }
+  { "from": "core", "to": "核心", "key": "core" },
+  { "from": "region", "to": "区域", "key": "region" },
+  { "from": "build", "to": "建造", "key": "build" },
+  { "from": "skip", "to": "跳过", "key": "skip" },
+  { "from": "toggle", "to": "切换", "key": "toggle" },
+  { "from": "effect", "to": "影响", "key": "effect" },
+  { "from": "mutation", "to": "突变", "key": "mutation" },
+  { "from": "bundle", "to": "捆", "key": "bundle" },
+  { "from": "hello", "to": "你好", "key": "hello" },
+  { "from": "hi", "to": "你好", "key": "hi" }
 ]
