@@ -51,3 +51,16 @@ server.post("/save", (req, res) => {
     res.send("write OK");
   });
 });
+
+// cookie 测试
+// const Cookies = require("cookies");
+
+// server.use("/test", express.static("./src"));
+// server.get("/cookie", (req, res) => {
+//   const cookies = new Cookies(req, res);
+//   cookies.set("say", "hello", {
+//     maxAge: 1000,
+//     secure: false
+//   });
+//   res.end("OK");
+// });
