@@ -14,7 +14,15 @@ server.use(cors());
 
 // 静态文件托管
 server.use("/", express.static("./page"));
+server.use("/antd", express.static("./page_AntD"));
 server.use("/static", express.static("./public"));
+
+server.get("/database", (req, res) => {
+  fs.readFile("./data.json", "utf-8", (err, data) => {
+    if (err) throw err;
+    res.send(data);
+  });
+});
 
 server.get("/api", (req, res) => {
   const { q, from, to } = req.query;
@@ -29,13 +37,6 @@ server.get("/api", (req, res) => {
       console.log(msg.trans_result[0].dst);
       res.send(msg.trans_result[0].dst);
     });
-});
-
-server.get("/database", (req, res) => {
-  fs.readFile("./data.json", "utf-8", (err, data) => {
-    if (err) throw err;
-    res.send(data);
-  });
 });
 
 // POST 请求体解析
