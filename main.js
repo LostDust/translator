@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 const { hex_md5 } = require("./lib/md5.js");
 
 const server = express();
-server.listen(3100, () => {
+server.listen(7070, () => {
   console.log("Server Start!");
 });
 
