@@ -13,8 +13,9 @@ server.listen(7070, () => {
 server.use(cors());
 
 // 静态文件托管
-server.use("/", express.static("./page"));
-server.use("/antd", express.static("./page_AntD"));
+server.use("/tran_page", express.static("./page"));
+server.use("/tran_antd", express.static("./page_AntD"));
+server.use("/pcr", express.static("./pcr_tools"));
 server.use("/static", express.static("./public"));
 
 server.get("/database", (req, res) => {
@@ -32,8 +33,8 @@ server.get("/api", (req, res) => {
   const uri = `?q=${q}&from=${from}&to=${to}&appid=${appid}&salt=${salt}&sign=${sign}`;
 
   fetch(`https://fanyi-api.baidu.com/api/trans/vip/translate${uri}`)
-    .then(res => res.json())
-    .then(msg => {
+    .then((res) => res.json())
+    .then((msg) => {
       console.log(msg.trans_result[0].dst);
       res.send(msg.trans_result[0].dst);
     });
@@ -47,7 +48,7 @@ server.post("/save", express.json());
 
 server.post("/save", (req, res) => {
   console.log(JSON.stringify(req.body));
-  fs.writeFile("./data.json", JSON.stringify(req.body), err => {
+  fs.writeFile("./data.json", JSON.stringify(req.body), (err) => {
     if (err) throw err;
     res.send("write OK");
   });
