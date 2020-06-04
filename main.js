@@ -13,7 +13,7 @@ server.listen(7070, () => {
 server.use(cors());
 
 // 静态文件托管
-server.use("/tran_page", express.static("./page"));
+server.use("/tran_vue", express.static("./pages/translator_vue"));
 server.use("/tran_antd", express.static("./page_AntD"));
 server.use("/pcr", express.static("./pcr_tools"));
 server.use("/static", express.static("./public"));
