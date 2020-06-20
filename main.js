@@ -13,10 +13,11 @@ server.listen(7070, () => {
 server.use(cors());
 
 // 静态文件托管
+server.use("/static", express.static("./public"));
 server.use("/tran_vue", express.static("./pages/translator_vue"));
+server.use("/tran_react", express.static("./pages/translator_react"));
 server.use("/tran_antd", express.static("./pages/translator_AntD"));
 server.use("/pcr", express.static("./pages/pcr_tools"));
-server.use("/static", express.static("./public"));
 
 server.get("/database", (req, res) => {
   fs.readFile("./data.json", "utf-8", (err, data) => {
